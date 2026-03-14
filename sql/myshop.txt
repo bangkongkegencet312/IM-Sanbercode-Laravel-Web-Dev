@@ -1,0 +1,79 @@
+// Soal 2 Membuat Table di Dalam Database
+
+// users
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255),
+    email VARCHAR(255),
+    password VARCHAR(255)
+);
+
+// categories
+CREATE TABLE categories (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255)
+);
+
+// items
+CREATE TABLE items (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255),
+    description VARCHAR(255),
+    price INT,
+    stock INT,
+    category_id INT,
+    FOREIGN KEY (category_id) REFERENCES categories(id) // ngambil data berdasarkan dari id di "categories"
+);
+
+// Soal 3 Memasukkan Data pada Table
+
+// users
+INSERT INTO users (name, email, password)
+VALUES 
+('John Doe', 'john@doe.com', 'john123'),
+('Jane Doe', 'jane@doe.com', 'jenita123');
+
+// categories
+INSERT INTO categories (name)
+VALUES 
+('gadget'),
+('cloth'),
+('men'),
+('women'),
+('branded');
+
+// items
+INSERT INTO items (name, description, price, stock, category_id)
+VALUES
+('Sumsang b50', 'hape keren dari merek sumsang', 4000000, 100, 1),
+('Uniklooh', 'baju keren dari brand ternama', 500000, 50, 2),
+('IMHO Watch', 'jam tangan anak yang jujur banget', 2000000, 10, 1);
+
+// Soal 4 Mengambil Data dari Database
+
+// a. Mengambil data users
+ SELECT id, name, email
+FROM users;
+
+// b. Mengambil data items
+// - Buatlah sebuah query untuk mendapatkan data item pada table items yang memiliki harga di atas 1000000 (satu juta).
+SELECT *
+FROM items
+WHERE price > 1000000;
+
+// - Buat sebuah query untuk mengambil data item pada table items yang memiliki name serupa atau mirip (like) dengan kata kunci “uniklo”, “watch”, atau “sang” (pilih salah satu saja).
+SELECT *
+FROM items
+WHERE name LIKE '%watch%';
+
+// c. Menampilkan data items join dengan kategori
+SELECT 
+    items.name,
+    items.description,
+    items.price,
+    items.stock,
+    items.category_id,
+    categories.name AS kategori
+FROM items
+JOIN categories 
+ON items.category_id = categories.id;
