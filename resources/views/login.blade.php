@@ -1,51 +1,168 @@
-<!DOCTYPE html>
-<html lang="id">
+<!doctype html>
+<html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up Form</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SeoDash Free Bootstrap Admin Template by Adminmart</title>
+  <link rel="shortcut icon" type="image/png" href="{{ asset("templates/src/assets/images/logos/seodashlogo.png") }}" />
+  <link rel="stylesheet" href="{{ asset('templates/src/assets/libs/simplebar/dist/simplebar.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('templates/src/assets/css/styles.min.css') }}" />
 </head>
+
 <body>
-    <h1>Buat Akun Baru!</h1>
-    <h2>Sign Up Form</h2>
+  <!--  Body Wrapper -->
+  <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+    data-sidebar-position="fixed" data-header-position="fixed">
+    <!-- Sidebar Start -->
+    <aside class="left-sidebar">
+      <!-- Sidebar scroll-->
+      <div>
+        <div class="brand-logo d-flex align-items-center justify-content-between">
+          <a href="{{ asset('templates/src/html/index.html') }}" class="text-nowrap logo-img">
+            <img src="{{ asset('templates/src/assets/images/logos/logo-light.svg') }}" alt="" />
+          </a>
+          <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
+            <i class="ti ti-x fs-8"></i>
+          </div>
+        </div>
+        <!-- Sidebar navigation-->
+        <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
+          <ul id="sidebarnav">
+            <li class="nav-small-cap">
+              <i class="ti ti-dots nav-small-cap-icon fs-6"></i>
+              <span class="hide-menu">Home</span>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="/" aria-expanded="false">
+                <span>
+                  <iconify-icon icon="solar:home-smile-bold-duotone" class="fs-6"></iconify-icon>
+                </span>
+                <span class="hide-menu">Dashboard</span>
+              </a>
+            </li>
+            <li class="nav-small-cap">
+              <i class="ti ti-dots nav-small-cap-icon fs-6"></i>
+              <span class="hide-menu">UI COMPONENTS</span>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="/register" aria-expanded="false">
+                <span>
+                  <iconify-icon icon="solar:layers-minimalistic-bold-duotone" class="fs-6"></iconify-icon>
+                </span>
+                <span class="hide-menu">Login Page</span>
+              </a>
+            </li>
+            
+          </ul>
 
-    <form action="/welcome" method="POST">
-        @csrf
-        <p>First name:</p>
-        <input type="text" name="first_name">
+        </nav>
+        <!-- End Sidebar navigation -->
+      </div>
+      <!-- End Sidebar scroll-->
+    </aside>
+    <!--  Sidebar End -->
+    <!--  Main wrapper -->
+    <div class="body-wrapper">
+      <!--  Header Start -->
+      <header class="app-header">
+        <nav class="navbar navbar-expand-lg navbar-light">
+          <ul class="navbar-nav">
+            <li class="nav-item d-block d-xl-none">
+              <a class="nav-link sidebartoggler nav-icon-hover" id="headerCollapse" href="javascript:void(0)">
+                <i class="ti ti-menu-2"></i>
+              </a>
+            </li>
+            <li class="nav-item">
 
-        <p>Last name:</p>
-        <input type="text" name="last_name">
+            </li>
+          </ul>
+          <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
+            <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
+        
+              <li class="nav-item dropdown">
+                <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
+                  <div class="message-body">
+                    <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
+                      <i class="ti ti-user fs-6"></i>
+                      <p class="mb-0 fs-3">My Profile</p>
+                    </a>
+                    <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
+                      <i class="ti ti-mail fs-6"></i>
+                      <p class="mb-0 fs-3">My Account</p>
+                    </a>
+                    <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
+                      <i class="ti ti-list-check fs-6"></i>
+                      <p class="mb-0 fs-3">My Task</p>
+                    </a>
+                    <a href="./authentication-login.html" class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </header>
+      <!--  Header End -->
+      <div class="container-fluid">
+        <div class="card">
+          <div class="card-body">
+            <p class="mb-0">
+                <h1>Buat Akun Baru!</h1>
+                <h2>Sign Up Form</h2>
+            
+                <form action="/welcome" method="POST">
+                    @csrf
+                    <p>First name:</p>
+                    <input type="text" name="first_name">
+            
+                    <p>Last name:</p>
+                    <input type="text" name="last_name">
+            
+                    <p>Gender:</p>
+                    <input type="radio" id="male" name="gender" value="male">
+                    <label for="male">Male</label><br>
+                    <input type="radio" id="female" name="gender" value="female">
+                    <label for="female">Female</label><br>
+                    <input type="radio" id="other" name="gender" value="other">
+                    <label for="other">Other</label>
+            
+                    <p>Nationality:</p>
+                    <select name="nationality">
+                        <option value="indonesian">Indonesian</option>
+                        <option value="english">English</option>
+                        <option value="other">Other</option>
+                    </select>
+            
+                    <p>Language Spoken:</p>
+                    <input type="checkbox" id="bahasa" name="language" value="indonesia">
+                    <label for="bahasa">Bahasa Indonesia</label><br>
+                    <input type="checkbox" id="english" name="language" value="english">
+                    <label for="english">English</label><br>
+                    <input type="checkbox" id="other_lang" name="language" value="other">
+                    <label for="other_lang">Other</label>
+            
+                    <p>Bio</p>
+                    <textarea name="bio" cols="30" rows="10"></textarea>
+            
+                    <br>
+                    <input type="submit" value="Sign Up">
+                </form>
+            
+                
+            </p>
+          </div>
+        </div>
 
-        <p>Gender:</p>
-        <input type="radio" id="male" name="gender" value="male">
-        <label for="male">Male</label><br>
-        <input type="radio" id="female" name="gender" value="female">
-        <label for="female">Female</label><br>
-        <input type="radio" id="other" name="gender" value="other">
-        <label for="other">Other</label>
-
-        <p>Nationality:</p>
-        <select name="nationality">
-            <option value="indonesian">Indonesian</option>
-            <option value="english">English</option>
-            <option value="other">Other</option>
-        </select>
-
-        <p>Language Spoken:</p>
-        <input type="checkbox" id="bahasa" name="language" value="indonesia">
-        <label for="bahasa">Bahasa Indonesia</label><br>
-        <input type="checkbox" id="english" name="language" value="english">
-        <label for="english">English</label><br>
-        <input type="checkbox" id="other_lang" name="language" value="other">
-        <label for="other_lang">Other</label>
-
-        <p>Bio</p>
-        <textarea name="bio" cols="30" rows="10"></textarea>
-
-        <br>
-        <input type="submit" value="Sign Up">
-    </form>
-
+      </div>
+    </div>
+  </div>
+  <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+  <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/libs/simplebar/dist/simplebar.js"></script>
+  <script src="../assets/js/sidebarmenu.js"></script>
+  <script src="../assets/js/app.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
 </body>
+
 </html>
