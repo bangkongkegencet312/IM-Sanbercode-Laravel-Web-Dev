@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('judul')
-  <h1>SanberBook</h1>
+  Homepage
 @endsection
 @section('content')
 

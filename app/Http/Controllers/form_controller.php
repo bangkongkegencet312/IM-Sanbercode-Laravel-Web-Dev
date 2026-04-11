@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User; // Import Model User
+use Illuminate\Support\Facades\Hash; // Import untuk enkripsi password
 
 class form_controller extends Controller
 {
@@ -10,13 +12,26 @@ class form_controller extends Controller
         return view('login');
 
     }
-    public function welcome (Request $request) {
-        // return $request->all();
-        $fname = $request->input('first_name');
-        $lname = $request->input('last_name');
+    public function welcome(Request $request)
+    {
+        // 1. Validasi Input
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|unique:users',
+            'password' => 'required|string|min:3',
+        ]);
 
-        return view('home', ["fname" => $fname, "lname" => $lname]);
+        // 2. Simpan User Baru ke Database
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password), // Enkripsi password demi keamanan
+            'role' => 'user', // Set default role menjadi 'user' sesuai permintaanmu
+        ]);
 
+        // 3. Redirect ke halaman login dengan pesan sukses
+        return redirect('/')->with('success', 'Registrasi berhasil! Silakan Sign In.');
     }
+    
     //
 }

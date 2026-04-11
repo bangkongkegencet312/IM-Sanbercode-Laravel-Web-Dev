@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('judul')
-  <h1>Buat Akun Baru!</h1>
+  Test Register Nama
 @endsection
 @section('content')
   <h2>Sign Up Form</h2>

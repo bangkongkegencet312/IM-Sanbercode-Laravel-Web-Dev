@@ -19,7 +19,8 @@ class category_controller extends Controller
             
             'name' => 'required|min:5',
             'description' => 'required',
-        ],[
+        ],
+        [
            'required' => 'inputan :attribute wajib diisi minimal 5 character',
            'min' => 'inputan minimal :min character'
         ]);
@@ -61,7 +62,8 @@ class category_controller extends Controller
             
         'name' => 'required|min:5',
         'description' => 'required',
-    ],[
+    ],
+    [
        'required' => 'inputan :attribute wajib diisi minimal 5 character',
        'min' => 'inputan minimal :min character'
     ]);
@@ -69,7 +71,7 @@ class category_controller extends Controller
     $now = Carbon::now();
 
     DB::table('categories')
-    ->where('id', 1)
+    ->where('id', $id)
     ->update(
         [
             'name' => $request->input('name'),
@@ -77,7 +79,15 @@ class category_controller extends Controller
         ]
     );
     return redirect('/category')->with('success', 'Category berhasil diubah');
-}
+    }
+
+    public function destroy($id)
+    {
+        DB::table('categories')->where('id', $id)->delete();
+        return redirect('/category')->with('success', 'category berhasil dihapus!');
 
     }
+
+
+}
     
